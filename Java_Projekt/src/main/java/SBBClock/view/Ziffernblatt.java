@@ -5,8 +5,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 
-import java.util.Stack;
-
 /**
  * Created by andreazirn on 05/05/16.
  */
@@ -58,7 +56,7 @@ public class Ziffernblatt extends StackPane{
 
 
     public void layoutControls() {
-        zblatt.setStyle("-fx-background-color: darkslategray");
+        zblatt.setStyle("-fx-fill: transparent ; -fx-stroke:black;");
         getChildren().addAll(line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, line11, line12, zblatt);
 
     }

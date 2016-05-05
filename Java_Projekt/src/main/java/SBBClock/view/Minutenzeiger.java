@@ -12,6 +12,7 @@ public class Minutenzeiger extends StackPane {
     private final WatchPM model;
     private Circle minutes;
     private Line minutenzeiger;
+    private Line test;
     public Minutenzeiger(WatchPM model) {
         this.model = model;
         initializeControls();
@@ -24,11 +25,14 @@ public class Minutenzeiger extends StackPane {
         minutes= new Circle(150,150,130);
 
         minutenzeiger= new Line(150,175,150,20);
+        test= new Line(0,0,20,20);
     }
 
     private void layoutControls() {
-        minutes.setStyle("-fx-fill: transparent");
-        getChildren().addAll(minutenzeiger,minutes);
+
+        minutes.setStyle("-fx-fill: transparent ; -fx-stroke:black;");
+        test.setStyle("-fx-fill: red ; -fx-stroke:red;");
+        getChildren().addAll(minutenzeiger,minutes,test);
     }
 
     private void addEventHandlers() {

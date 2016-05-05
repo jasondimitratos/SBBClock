@@ -19,13 +19,13 @@
 package SBBClock.view;
 
 import SBBClock.model.WatchPM;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.HBox;
 
 
 /**
  * @author Luzian Seiler, Jason Dimitratos , Andrea Zirn
  */
-public class MainUI extends StackPane {
+public class MainUI extends HBox{
 
 	private final WatchPM model;
 	private Ziffernblatt ziffernblatt;
@@ -49,6 +49,7 @@ public class MainUI extends StackPane {
 	}
 
 	private void layoutControls() {
+		setPrefSize(300,300);
 		ziffernblatt.setId("ziffernblatt");
 		stundenzeiger.setId("stundenzeiger");
 		minutenzeiger.setId("minutenzeiger");
