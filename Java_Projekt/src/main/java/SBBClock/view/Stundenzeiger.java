@@ -22,7 +22,7 @@ public class Stundenzeiger extends BorderPane {
 
     private void initializeControls() {
         stunden= new Circle(150,150,95);
-        stundenzeiger= new Line(150,55,150,171.333);
+        stundenzeiger= new Line(150,69,150,171.333);//55
     }
 
     private void layoutControls() {
