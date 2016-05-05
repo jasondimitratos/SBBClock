@@ -30,7 +30,7 @@ import javafx.scene.transform.Rotate;
 public class MainUI extends BorderPane{
 
     private final WatchPM model;
-    private Ziffernblatt ziffernblatt;
+    private Zifferblatt zifferblatt;
     private Stundenzeiger stundenzeiger;
     private Minutenzeiger minutenzeiger;
     private Sekundenzeiger sekundenzeiger;
@@ -44,7 +44,7 @@ public class MainUI extends BorderPane{
 
 
     private void initializeControls() {
-        ziffernblatt = new Ziffernblatt(model);
+        zifferblatt = new Zifferblatt(model);
         stundenzeiger = new Stundenzeiger(model);
         minutenzeiger = new Minutenzeiger(model);
         sekundenzeiger = new Sekundenzeiger(model);
@@ -52,11 +52,11 @@ public class MainUI extends BorderPane{
 
     private void layoutControls() {
         setPrefSize(300,300);
-        ziffernblatt.setId("ziffernblatt");
+        zifferblatt.setId("zifferblatt");
         stundenzeiger.setId("stundenzeiger");
         minutenzeiger.setId("minutenzeiger");
         sekundenzeiger.setId("sekundenzeiger");
-        getChildren().addAll(ziffernblatt, stundenzeiger, minutenzeiger, sekundenzeiger);
+        getChildren().addAll(zifferblatt, stundenzeiger, minutenzeiger, sekundenzeiger);
 
         final Rotate stundenRotation = new Rotate();
         final Rotate minutenRotation = new Rotate();

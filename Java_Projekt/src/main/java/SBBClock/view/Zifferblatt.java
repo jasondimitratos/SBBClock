@@ -8,7 +8,7 @@ import javafx.scene.shape.Line;
 /**
  * Created by andreazirn on 05/05/16.
  */
-public class Ziffernblatt extends BorderPane{
+public class Zifferblatt extends BorderPane{
 
     private final WatchPM model;
 
@@ -28,7 +28,7 @@ public class Ziffernblatt extends BorderPane{
     private Circle zblatt;
     private Circle zblattRand;
 
-    public Ziffernblatt(WatchPM model) {
+    public Zifferblatt(WatchPM model) {
         this.model = model;
         initializeControls();
         layoutControls();

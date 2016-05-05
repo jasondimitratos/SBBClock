@@ -8,7 +8,7 @@ import javafx.beans.property.StringProperty;
  */
 public class WatchPM {
 
-    private final StringProperty windowTitle = new SimpleStringProperty("SBB CLock");
+    private final StringProperty windowTitle = new SimpleStringProperty("SBB Clock");
 
     public String getWindowTitle() {
         return windowTitle.get();
