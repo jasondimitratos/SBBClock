@@ -19,7 +19,7 @@ public class TimeUpdatePM {
                         Duration.seconds(0),
                         actionEvent -> {
                             Calendar kalender = GregorianCalendar.getInstance();
-                            double aktuelleStundenWinkel = kalender.get(Calendar.HOUR)*360/12;
+                            double aktuelleStundenWinkel = kalender.get(Calendar.HOUR)*360/12 + kalender.get(Calendar.MINUTE)*30/60;
                             double aktuelleMinutenWinkel = kalender.get(Calendar.MINUTE)*360/60;
                             double aktuelleSekundenWinkel = kalender.get(Calendar.SECOND)*360/60;
                             stundenRotation.setAngle(aktuelleStundenWinkel);
@@ -31,6 +31,11 @@ public class TimeUpdatePM {
         );
         aktualisierer.setCycleCount(Animation.INDEFINITE);
         aktualisierer.play();
+
+        if (true){
+            aktualisierer.stop();
+            new TimeUpdateSBBPM(stundenRotation, minutenRotation, sekundenRotation);
+        }
     }
 }
 

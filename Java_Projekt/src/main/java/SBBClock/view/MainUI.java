@@ -19,6 +19,7 @@
 package SBBClock.view;
 
 import SBBClock.model.TimeUpdatePM;
+import SBBClock.model.TimeUpdateSBBPM;
 import SBBClock.model.WatchPM;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.transform.Rotate;
