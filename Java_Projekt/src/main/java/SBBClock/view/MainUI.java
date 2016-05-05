@@ -22,14 +22,19 @@ import SBBClock.model.WatchPM;
 import javafx.geometry.Insets;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 
 
 /**
  * @author Luzian Seiler, Jason Dimitratos , Andrea Zirn
  */
-public class MainUI extends BorderPane {
+public class MainUI extends HBox {
 
 	private final WatchPM model;
+	private Ziffernblatt ziffernblatt;
+	private Stundenzeiger stundenzeiger;
+	private Minutenzeiger minutenzeiger;
+	private Sekundenzeiger sekdunenzeigen;
 
 	public MainUI(WatchPM model) {
 		this.model = model;
@@ -38,17 +43,17 @@ public class MainUI extends BorderPane {
 		addBindings();
 	}
 
-	private TextField valueField;
 
 	private void initializeControls() {
-		setPadding(new Insets(10));
-
-		valueField = new TextField();
+		ziffernblatt = new Ziffernblatt(model);
+		stundenzeiger = new Stundenzeiger(model);
+		minutenzeiger = new Minutenzeiger(model);
+		sekdunenzeigen = new Sekundenzeiger(model);
 	}
 
 	private void layoutControls() {
-		setMargin(valueField, new Insets(0, 0, 10, 10));
-		setRight(valueField);
+		getChildren().addAll(ziffernblatt, stundenzeiger, minutenzeiger, sekdunenzeigen);
+
 	}
 
 	private void addEventHandlers() {

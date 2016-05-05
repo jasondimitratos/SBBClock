@@ -21,6 +21,7 @@ package SBBClock;
 import SBBClock.model.WatchPM;
 import SBBClock.view.MainUI;
 import javafx.application.Application;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
@@ -34,6 +35,7 @@ public class AppStarter extends Application {
 	public void start(Stage primaryStage) throws Exception {
 
 		WatchPM model = new WatchPM();
+
 		Region rootPanel = new MainUI(model);
 
 		Scene scene = new Scene(rootPanel);

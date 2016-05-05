@@ -2,6 +2,7 @@ package SBBClock.view;
 
 import SBBClock.model.WatchPM;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 
 /**
@@ -9,6 +10,7 @@ import javafx.scene.shape.Line;
  */
 public class Ziffernblatt extends VBox{
 
+    private final WatchPM model;
 
     private Line line1;
     private Line line2;
@@ -23,13 +25,26 @@ public class Ziffernblatt extends VBox{
     private Line line11;
     private Line line12;
 
+    private Circle ziffernblatt;
+    private Circle ziffernblattRand;
+
+    public Ziffernblatt(WatchPM model) {
+        this.model = model;
+        initializeControls();
+        layoutControls();
+        addBindings();
+    }
+
 
     public void initializeControls() {
+        line1 = new Line();
+        ziffernblatt = new Circle(0, 0, 200);
 
     }
 
 
     public void layoutControls() {
+        getChildren().addAll(line1, ziffernblatt);
 
     }
 
