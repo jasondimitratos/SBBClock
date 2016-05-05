@@ -24,12 +24,13 @@ public class Sekundenzeiger extends BorderPane {
 
     private void initializeControls() {
         seconds= new Circle(150,150,110);
-        visualSek=new Circle(251.167,150,8);
-        sekundenzeiger= new Line(128.333,150,260,150);
+        visualSek=new Circle(150,48.833,8.833);
+        sekundenzeiger= new Line(150,171.667,150,40);
     }
 
     private void layoutControls() {
         seconds.setStyle("-fx-fill: transparent");
+
         getChildren().addAll(seconds,sekundenzeiger,visualSek);
     }
 

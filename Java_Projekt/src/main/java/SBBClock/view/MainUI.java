@@ -83,9 +83,9 @@ public class MainUI extends BorderPane{
                         Duration.seconds(0),
                         actionEvent -> {
                             Calendar kalender = GregorianCalendar.getInstance();
-                            double aktuelleStundenWinkel = kalender.get(Calendar.HOUR)*360/12+90;
+                            double aktuelleStundenWinkel = kalender.get(Calendar.HOUR)*360/12;
                             double aktuelleMinutenWinkel = kalender.get(Calendar.MINUTE)*360/60;
-                            double aktuelleSekundenWinkel = kalender.get(Calendar.SECOND)*360/60-90;
+                            double aktuelleSekundenWinkel = kalender.get(Calendar.SECOND)*360/60;
                             stundenRotation.setAngle(aktuelleStundenWinkel);
                             minutenRotation.setAngle(aktuelleMinutenWinkel);
                             sekundenRotation.setAngle(aktuelleSekundenWinkel);
