@@ -34,7 +34,7 @@ public class MainUI extends HBox {
 	private Ziffernblatt ziffernblatt;
 	private Stundenzeiger stundenzeiger;
 	private Minutenzeiger minutenzeiger;
-	private Sekundenzeiger sekdunenzeigen;
+	private Sekundenzeiger sekundenzeiger;
 
 	public MainUI(WatchPM model) {
 		this.model = model;
@@ -48,11 +48,11 @@ public class MainUI extends HBox {
 		ziffernblatt = new Ziffernblatt(model);
 		stundenzeiger = new Stundenzeiger(model);
 		minutenzeiger = new Minutenzeiger(model);
-		sekdunenzeigen = new Sekundenzeiger(model);
+		sekundenzeiger = new Sekundenzeiger(model);
 	}
 
 	private void layoutControls() {
-		getChildren().addAll(ziffernblatt, stundenzeiger, minutenzeiger, sekdunenzeigen);
+		getChildren().addAll(ziffernblatt, stundenzeiger, minutenzeiger, sekundenzeiger);
 
 	}
 
