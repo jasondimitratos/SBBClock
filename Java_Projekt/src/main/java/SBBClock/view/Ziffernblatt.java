@@ -37,14 +37,26 @@ public class Ziffernblatt extends VBox{
 
 
     public void initializeControls() {
-        line1 = new Line();
-        ziffernblatt = new Circle(0, 0, 200);
+        line1 = new Line(5.001, 150, 40.001, 150);
+        line2 = new Line(259.514, 150, 294.525, 150);
+        line3 = new Line(150.001, 40, 150.001, 5);
+        line4 = new Line(149.001, 295, 149.001, 260);
+        line5 = new Line(94.989, 55.156, 7.489, 24.845);
+        line6 = new Line(222.511, 275.155, 05.012, 44.845);
+        line7 = new Line(54.718, 94.99, 4.407, 77.489);
+        line8 = new Line(275.593, 222.512, 245.282, 205.01);
+        line9 = new Line(54.719, 205.011, 4.407, 222.512);
+        line10 = new Line(275.593, 77.49, 245.281, 94.991);
+        line11 = new Line(94.989, 45.282, 77.489, 275.594);
+        line12 = new Line(205.011, 54.719, 222.511, 24.408);
+        ziffernblatt = new Circle(150, 150, 150);
+        //ziffernblattRand = new Circle(150, 150, 140);
 
     }
 
 
     public void layoutControls() {
-        getChildren().addAll(line1, ziffernblatt);
+        getChildren().addAll(line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, line11, line12, ziffernblatt);
 
     }
 
