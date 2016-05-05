@@ -30,7 +30,7 @@ public class Minutenzeiger extends BorderPane {
 
     private void layoutControls() {
 
-        minutes.setStyle("-fx-fill: transparent ; -fx-stroke:black;");
+        minutes.setStyle("-fx-fill: transparent");
 
         getChildren().addAll(minutenzeiger,minutes);
     }
