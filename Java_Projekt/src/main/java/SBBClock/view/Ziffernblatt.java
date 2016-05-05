@@ -8,6 +8,6 @@ import javafx.scene.layout.VBox;
  */
 public class Ziffernblatt extends VBox{
 
-
+    int ziffer = 2;
 
 }
