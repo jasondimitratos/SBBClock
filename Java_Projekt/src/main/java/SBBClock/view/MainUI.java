@@ -18,15 +18,10 @@
 
 package SBBClock.view;
 
+import SBBClock.model.TimeUpdatePM;
 import SBBClock.model.WatchPM;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.transform.Rotate;
-import javafx.util.Duration;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 
 /**
@@ -78,23 +73,7 @@ public class MainUI extends BorderPane{
         sekundenRotation.setPivotX(150);
         sekundenRotation.setPivotY(150);
 
-        final Timeline aktualisierer = new Timeline(
-                new KeyFrame(
-                        Duration.seconds(0),
-                        actionEvent -> {
-                            Calendar kalender = GregorianCalendar.getInstance();
-                            double aktuelleStundenWinkel = kalender.get(Calendar.HOUR)*360/12;
-                            double aktuelleMinutenWinkel = kalender.get(Calendar.MINUTE)*360/60;
-                            double aktuelleSekundenWinkel = kalender.get(Calendar.SECOND)*360/60;
-                            stundenRotation.setAngle(aktuelleStundenWinkel);
-                            minutenRotation.setAngle(aktuelleMinutenWinkel);
-                            sekundenRotation.setAngle(aktuelleSekundenWinkel);
-                        }
-                ),
-                new KeyFrame(Duration.seconds(1))
-        );
-        aktualisierer.setCycleCount(Animation.INDEFINITE);
-        aktualisierer.play();
+        new TimeUpdatePM(stundenRotation, minutenRotation, sekundenRotation);
 
     }
 

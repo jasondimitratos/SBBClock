@@ -46,8 +46,8 @@ public class AppStarter extends Application {
 		primaryStage.setTitle(model.getWindowTitle());
 		primaryStage.setScene(scene);
 
-		primaryStage.setWidth(300);
-		primaryStage.setHeight(300);
+		primaryStage.setWidth(315);
+		primaryStage.setHeight(340);
 		primaryStage.centerOnScreen();
 
 		primaryStage.show();
