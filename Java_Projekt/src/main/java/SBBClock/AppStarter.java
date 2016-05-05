@@ -38,8 +38,15 @@ public class AppStarter extends Application {
 
 		Scene scene = new Scene(rootPanel);
 
+		String stylesheet = getClass().getResource("style.css").toExternalForm();
+		scene.getStylesheets().add(stylesheet);
+
 		primaryStage.setTitle(model.getWindowTitle());
 		primaryStage.setScene(scene);
+
+		primaryStage.setWidth(300);
+		primaryStage.setHeight(300);
+		primaryStage.centerOnScreen();
 
 		primaryStage.show();
 	}

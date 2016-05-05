@@ -48,7 +48,6 @@ public class MainUI extends BorderPane {
 
 	private void layoutControls() {
 		setMargin(valueField, new Insets(0, 0, 10, 10));
-
 		setRight(valueField);
 	}
 
