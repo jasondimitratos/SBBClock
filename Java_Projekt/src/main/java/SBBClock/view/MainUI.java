@@ -16,32 +16,32 @@
  *
  */
 
-package simplecontroltemplate.demo;
+package SBBClock.view;
 
+import SBBClock.model.WatchPM;
 import javafx.geometry.Insets;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
-import ch.fhnw.ws4.module05.simplecontroltemplate.SimpleControl;
 
 /**
  * @author Dieter Holz
  */
-public class DemoPane extends BorderPane {
-	private SimpleControl customControl;
+public class MainUI extends BorderPane {
 
-	private TextField valueField;
+	private final WatchPM model;
 
-	public DemoPane() {
+	public MainUI(WatchPM model) {
+		this.model = model;
 		initializeControls();
 		layoutControls();
 		addBindings();
 	}
 
+	private TextField valueField;
+
 	private void initializeControls() {
 		setPadding(new Insets(10));
-
-		customControl = new SimpleControl();
 
 		valueField = new TextField();
 	}
@@ -49,12 +49,16 @@ public class DemoPane extends BorderPane {
 	private void layoutControls() {
 		setMargin(valueField, new Insets(0, 0, 10, 10));
 
-		setCenter(customControl);
 		setRight(valueField);
 	}
 
+	private void addEventHandlers() {
+	}
+
+	private void addValueChangedListeners() {
+	}
+
 	private void addBindings() {
-		valueField.textProperty().bindBidirectional(customControl.textProperty());
 
 	}
 
