@@ -27,8 +27,8 @@ public class Ziffernblatt extends StackPane{
     private Line line11;
     private Line line12;
 
-    private Circle ziffernblatt;
-    private Circle ziffernblattRand;
+    private Circle zblatt;
+    private Circle zblattRand;
 
     public Ziffernblatt(WatchPM model) {
         this.model = model;
@@ -51,14 +51,15 @@ public class Ziffernblatt extends StackPane{
         line10 = new Line(275.593, 77.49, 245.281, 94.991);
         line11 = new Line(94.989, 45.282, 77.489, 275.594);
         line12 = new Line(205.011, 54.719, 222.511, 24.408);
-        ziffernblatt = new Circle(150, 150, 150);
+        zblatt = new Circle(150, 150, 150);
         //ziffernblattRand = new Circle(150, 150, 140);
 
     }
 
 
     public void layoutControls() {
-        getChildren().addAll(line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, line11, line12, ziffernblatt);
+        zblatt.setStyle("-fx-background-color: darkslategray");
+        getChildren().addAll(line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, line11, line12, zblatt);
 
     }
 
