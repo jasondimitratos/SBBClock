@@ -27,7 +27,7 @@ public class Stundenzeiger extends BorderPane {
 
     private void layoutControls() {
 
-        stunden.setStyle("-fx-fill: transparent");
+        stunden.setStyle("-fx-fill: transparent ; -fx-stroke:black;");
         getChildren().addAll(stundenzeiger,stunden);
     }
 

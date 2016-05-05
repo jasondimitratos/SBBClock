@@ -19,7 +19,14 @@
 package SBBClock.view;
 
 import SBBClock.model.WatchPM;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 
 /**
@@ -27,44 +34,78 @@ import javafx.scene.layout.BorderPane;
  */
 public class MainUI extends BorderPane{
 
-	private final WatchPM model;
-	private Ziffernblatt ziffernblatt;
-	private Stundenzeiger stundenzeiger;
-	private Minutenzeiger minutenzeiger;
-	private Sekundenzeiger sekundenzeiger;
+    private final WatchPM model;
+    private Ziffernblatt ziffernblatt;
+    private Stundenzeiger stundenzeiger;
+    private Minutenzeiger minutenzeiger;
+    private Sekundenzeiger sekundenzeiger;
 
-	public MainUI(WatchPM model) {
-		this.model = model;
-		initializeControls();
-		layoutControls();
-		addBindings();
-	}
+    public MainUI(WatchPM model) {
+        this.model = model;
+        initializeControls();
+        layoutControls();
+        addBindings();
+    }
 
 
-	private void initializeControls() {
-		ziffernblatt = new Ziffernblatt(model);
-		stundenzeiger = new Stundenzeiger(model);
-		minutenzeiger = new Minutenzeiger(model);
-		sekundenzeiger = new Sekundenzeiger(model);
-	}
+    private void initializeControls() {
+        ziffernblatt = new Ziffernblatt(model);
+        stundenzeiger = new Stundenzeiger(model);
+        minutenzeiger = new Minutenzeiger(model);
+        sekundenzeiger = new Sekundenzeiger(model);
+    }
 
-	private void layoutControls() {
-		setPrefSize(300,300);
-		ziffernblatt.setId("ziffernblatt");
-		stundenzeiger.setId("stundenzeiger");
-		minutenzeiger.setId("minutenzeiger");
-		sekundenzeiger.setId("sekundenzeiger");
-		getChildren().addAll(ziffernblatt, stundenzeiger, minutenzeiger, sekundenzeiger);
-	}
+    private void layoutControls() {
+        setPrefSize(300,300);
+        ziffernblatt.setId("ziffernblatt");
+        stundenzeiger.setId("stundenzeiger");
+        minutenzeiger.setId("minutenzeiger");
+        sekundenzeiger.setId("sekundenzeiger");
+        getChildren().addAll(ziffernblatt, stundenzeiger, minutenzeiger, sekundenzeiger);
 
-	private void addEventHandlers() {
-	}
+        final Rotate stundenRotation = new Rotate();
+        final Rotate minutenRotation = new Rotate();
+        final Rotate sekundenRotation = new Rotate();
 
-	private void addValueChangedListeners() {
-	}
+        stundenzeiger.getTransforms().add(stundenRotation);
+        minutenzeiger.getTransforms().add(minutenRotation);
+        sekundenzeiger.getTransforms().add(sekundenRotation);
 
-	private void addBindings() {
+        stundenRotation.setPivotX(150);
+        stundenRotation.setPivotY(150);
+        minutenRotation.setPivotX(150);
+        minutenRotation.setPivotY(150);
+        sekundenRotation.setPivotX(150);
+        sekundenRotation.setPivotY(150);
 
-	}
+        final Timeline aktualisierer = new Timeline(
+                new KeyFrame(
+                        Duration.seconds(0),
+                        actionEvent -> {
+                            Calendar kalender = GregorianCalendar.getInstance();
+                            double aktuelleStundenWinkel = kalender.get(Calendar.HOUR)*360/12+90;
+                            double aktuelleMinutenWinkel = kalender.get(Calendar.MINUTE)*360/60;
+                            double aktuelleSekundenWinkel = kalender.get(Calendar.SECOND)*360/60-90;
+                            stundenRotation.setAngle(aktuelleStundenWinkel);
+                            minutenRotation.setAngle(aktuelleMinutenWinkel);
+                            sekundenRotation.setAngle(aktuelleSekundenWinkel);
+                        }
+                ),
+                new KeyFrame(Duration.seconds(1))
+        );
+        aktualisierer.setCycleCount(Animation.INDEFINITE);
+        aktualisierer.play();
+
+    }
+
+    private void addEventHandlers() {
+    }
+
+    private void addValueChangedListeners() {
+    }
+
+    private void addBindings() {
+
+    }
 
 }

@@ -37,18 +37,18 @@ public class Ziffernblatt extends BorderPane{
 
 
     public void initializeControls() {
-        line1 = new Line(6.501,150,41.501,150);
-        line2 = new Line(261.024,150,296.025,150);
-        line3 = new Line(151.501,40,151.501,5);//
-        line4 = new Line(150.501,295,150.501,260);//
-        line5 = new Line(96.489,55.156,78.989,24.845);//
-        line6 = new Line(224.011,275.155,206.512,244.845);//
-        line7 = new Line(56.218,94.99,25.907,77.489);//
-        line8 = new Line(277.093,222.512,246.782,205.01);//
-        line9 = new Line(56.219,205.011,25.907,222.512);//
-        line10 = new Line(277.093,77.49,246.781,94.991);//
-        line11 = new Line(96.489,245.282,78.989,275.594);//
-        line12 = new Line(206.511,54.719,224.011,24.408);
+        line1 = new Line(5.001, 150, 40.001, 150);
+        line2 = new Line(259.514, 150, 294.525, 150);
+        line3 = new Line(150.001, 40, 150.001, 5);
+        line4 = new Line(149.001, 295, 149.001, 260);
+        line5 = new Line(94.989, 55.156, 7.489, 24.845);
+        line6 = new Line(222.511, 275.155, 05.012, 44.845);
+        line7 = new Line(54.718, 94.99, 4.407, 77.489);
+        line8 = new Line(275.593, 222.512, 245.282, 205.01);
+        line9 = new Line(54.719, 205.011, 4.407, 222.512);
+        line10 = new Line(275.593, 77.49, 245.281, 94.991);
+        line11 = new Line(94.989, 45.282, 77.489, 275.594);
+        line12 = new Line(205.011, 54.719, 222.511, 24.408);
         zblatt = new Circle(150, 150, 150);
         //ziffernblattRand = new Circle(150, 150, 140);
 
