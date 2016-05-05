@@ -8,6 +8,37 @@ import javafx.scene.layout.VBox;
  */
 public class Ziffernblatt extends VBox{
 
-    int ziffer = 2;
 
+    public WatchPM getWatchPM() {
+        return null;
+    }
+
+
+    public void init() {
+
+    }
+
+
+    public void initializeControls() {
+
+    }
+
+
+    public void layoutControls() {
+
+    }
+
+    public void addEventHandlers() {
+
+    }
+
+
+    public void addValueChangedListeners() {
+
+    }
+
+
+    public void addBindings() {
+
+    }
 }
