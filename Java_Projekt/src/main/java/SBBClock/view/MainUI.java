@@ -19,9 +19,6 @@
 package SBBClock.view;
 
 import SBBClock.model.WatchPM;
-import javafx.geometry.Insets;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
 
@@ -52,8 +49,11 @@ public class MainUI extends HBox {
 	}
 
 	private void layoutControls() {
+		ziffernblatt.setId("ziffernblatt");
+		stundenzeiger.setId("stundenzeiger");
+		minutenzeiger.setId("minutenzeiger");
+		sekundenzeiger.setId("sekundenzeiger");
 		getChildren().addAll(ziffernblatt, stundenzeiger, minutenzeiger, sekundenzeiger);
-
 	}
 
 	private void addEventHandlers() {
