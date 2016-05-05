@@ -30,7 +30,7 @@ public class Sekundenzeiger extends BorderPane {
 
     private void layoutControls() {
         seconds.setStyle("-fx-fill: transparent");
-        sekundenzeiger.setStyle("-fx-stroke-width: 3 px;-fx-stroke:red");
+        sekundenzeiger.setStyle("-fx-stroke-width: 3px;-fx-stroke:red");
         visualSek.setStyle("-fx-fill: red");
         getChildren().addAll(seconds,sekundenzeiger,visualSek);
     }
