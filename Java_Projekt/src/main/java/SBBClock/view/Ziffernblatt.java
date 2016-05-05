@@ -1,14 +1,16 @@
 package SBBClock.view;
 
 import SBBClock.model.WatchPM;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+
+import java.util.Stack;
 
 /**
  * Created by andreazirn on 05/05/16.
  */
-public class Ziffernblatt extends VBox{
+public class Ziffernblatt extends StackPane{
 
     private final WatchPM model;
 
