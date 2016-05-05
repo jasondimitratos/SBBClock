@@ -27,7 +27,7 @@ public class Minutenzeiger extends StackPane {
     }
 
     private void layoutControls() {
-        minutes.setStyle("-fx-fill: transparent",);
+        minutes.setStyle("-fx-fill: transparent");
         getChildren().addAll(minutenzeiger,minutes);
     }
 

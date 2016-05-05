@@ -1,14 +1,14 @@
 package SBBClock.view;
 
 import SBBClock.model.WatchPM;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 
 /**
  * Created by andreazirn on 05/05/16.
  */
-public class Stundenzeiger extends HBox {
+public class Stundenzeiger extends StackPane {
     private final WatchPM model;
     private Circle stunden;
     private Line stundenzeiger;
@@ -26,6 +26,7 @@ public class Stundenzeiger extends HBox {
     }
 
     private void layoutControls() {
+        stunden.setStyle("-fx-fill: transparent");
         getChildren().addAll(stundenzeiger,stunden);
     }
 

@@ -19,13 +19,13 @@
 package SBBClock.view;
 
 import SBBClock.model.WatchPM;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 
 
 /**
  * @author Luzian Seiler, Jason Dimitratos , Andrea Zirn
  */
-public class MainUI extends HBox {
+public class MainUI extends StackPane {
 
 	private final WatchPM model;
 	private Ziffernblatt ziffernblatt;
