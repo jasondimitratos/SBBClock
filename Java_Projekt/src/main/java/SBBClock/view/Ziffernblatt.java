@@ -1,14 +1,14 @@
 package SBBClock.view;
 
 import SBBClock.model.WatchPM;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 
 /**
  * Created by andreazirn on 05/05/16.
  */
-public class Ziffernblatt extends StackPane{
+public class Ziffernblatt extends BorderPane{
 
     private final WatchPM model;
 
