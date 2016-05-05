@@ -57,6 +57,20 @@ public class Ziffernblatt extends BorderPane{
 
     public void layoutControls() {
         zblatt.setStyle("-fx-fill: transparent ; -fx-stroke:black;");
+        line1.setStyle("-fx-stroke-width: 9 px");
+        line2.setStyle("-fx-stroke-width: 9 px");
+        line3.setStyle("-fx-stroke-width: 9 px");
+        line4.setStyle("-fx-stroke-width: 9 px");
+        line5.setStyle("-fx-stroke-width: 9 px");
+        line6.setStyle("-fx-stroke-width: 9 px");
+        line7.setStyle("-fx-stroke-width: 9 px");
+        line8.setStyle("-fx-stroke-width: 9 px");
+        line9.setStyle("-fx-stroke-width: 9 px");
+        line10.setStyle("-fx-stroke-width: 9 px");
+        line11.setStyle("-fx-stroke-width: 9 px");
+        line12.setStyle("-fx-stroke-width: 9 px");
+
+
         getChildren().addAll(line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, line11, line12, zblatt);
 
     }
