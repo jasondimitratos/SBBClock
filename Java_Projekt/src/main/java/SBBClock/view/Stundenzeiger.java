@@ -21,8 +21,8 @@ public class Stundenzeiger extends HBox {
 
 
     private void initializeControls() {
-        stunden= new Circle(150,150,130);
-        stundenzeiger= new Line(150,175,150,20);
+        stunden= new Circle(150,150,95);
+        stundenzeiger= new Line(55,150,171.333,150);
     }
 
     private void layoutControls() {

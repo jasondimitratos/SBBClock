@@ -11,6 +11,7 @@ import javafx.scene.shape.Line;
 public class Sekundenzeiger extends HBox {
     private final WatchPM model;
     private Circle seconds;
+    private Circle visualSek;
     private Line sekundenzeiger;
     public Sekundenzeiger(WatchPM model) {
         this.model = model;
@@ -21,12 +22,13 @@ public class Sekundenzeiger extends HBox {
 
 
     private void initializeControls() {
-        seconds= new Circle(150,150,130);
-        sekundenzeiger= new Line(150,175,150,20);
+        seconds= new Circle(150,150,110);
+        visualSek= new Circle(251.167,150,8.833);
+        sekundenzeiger= new Line(128.333,150,260,150);
     }
 
     private void layoutControls() {
-        getChildren().addAll(seconds,sekundenzeiger);
+        getChildren().addAll(seconds,sekundenzeiger,visualSek);
     }
 
     private void addEventHandlers() {
