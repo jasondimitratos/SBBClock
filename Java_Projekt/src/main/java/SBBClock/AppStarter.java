@@ -16,8 +16,10 @@
  *
  */
 
-package simplecontroltemplate.demo;
+package SBBClock;
 
+import SBBClock.model.WatchPM;
+import SBBClock.view.MainUI;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
@@ -26,15 +28,17 @@ import javafx.stage.Stage;
 /**
  * @author Dieter Holz
  */
-public class DemoStarter extends Application {
+public class AppStarter extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Region rootPanel = new DemoPane();
+
+		WatchPM model = new WatchPM();
+		Region rootPanel = new MainUI(model);
 
 		Scene scene = new Scene(rootPanel);
 
-		primaryStage.setTitle("Simple Control Demo");
+		primaryStage.setTitle(model.getWindowTitle());
 		primaryStage.setScene(scene);
 
 		primaryStage.show();
