@@ -9,11 +9,6 @@ import javafx.scene.layout.VBox;
 public class Ziffernblatt extends VBox{
 
 
-    public WatchPM getWatchPM() {
-        return null;
-    }
-
-
     public void init() {
 
     }

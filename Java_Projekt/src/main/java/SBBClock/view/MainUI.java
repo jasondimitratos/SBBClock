@@ -25,7 +25,7 @@ import javafx.scene.layout.BorderPane;
 
 
 /**
- * @author Dieter Holz
+ * @author Luzian Seiler, Jason Dimitratos , Andrea Zirn
  */
 public class MainUI extends BorderPane {
 
