@@ -29,7 +29,7 @@ import javafx.scene.layout.BorderPane;
  */
 public class MainUI extends BorderPane {
 
-	WatchPM model = new WatchPM();
+	private final WatchPM model;
 
 	public MainUI(WatchPM model) {
 		this.model = model;
@@ -50,6 +50,12 @@ public class MainUI extends BorderPane {
 		setMargin(valueField, new Insets(0, 0, 10, 10));
 
 		setRight(valueField);
+	}
+
+	private void addEventHandlers() {
+	}
+
+	private void addValueChangedListeners() {
 	}
 
 	private void addBindings() {
