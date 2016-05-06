@@ -1,8 +1,6 @@
 package SBBClock.model;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.util.Duration;
 import javafx.scene.transform.Rotate;
 import java.util.Calendar;
@@ -13,7 +11,10 @@ import java.util.GregorianCalendar;
  */
 public class TimeUpdatePM {
 
-    public TimeUpdatePM(Rotate stundenRotation, Rotate minutenRotation, Rotate sekundenRotation){
+    public TimeUpdatePM(){
+    }
+
+    public void use(Rotate stundenRotation, Rotate minutenRotation, Rotate sekundenRotation){
         final Timeline aktualisierer = new Timeline(
                 new KeyFrame(
                         Duration.seconds(0),
@@ -32,9 +33,107 @@ public class TimeUpdatePM {
         aktualisierer.setCycleCount(Animation.INDEFINITE);
         aktualisierer.play();
 
-        if (true){
+        if (false){
             aktualisierer.stop();
-            new TimeUpdateSBBPM(stundenRotation, minutenRotation, sekundenRotation);
+        }
+    }
+
+    public void usesbb(Rotate stundenRotation, Rotate minutenRotation, Rotate sekundenRotation){
+        Calendar myKalender = GregorianCalendar.getInstance();
+        final double startStundenWinkel = myKalender.get(Calendar.HOUR)*360/12 + myKalender.get(Calendar.MINUTE)*30/60;
+        final double startMinutenWinkel = myKalender.get(Calendar.MINUTE)*360/60;
+        final double startSekundenWinkel = myKalender.get(Calendar.SECOND)*360/60;
+        stundenRotation.setAngle(startStundenWinkel);
+        minutenRotation.setAngle(startMinutenWinkel);
+        sekundenRotation.setAngle(startSekundenWinkel);
+
+        final Timeline sekundenInitialisierer = new Timeline(
+                new KeyFrame(
+                        Duration.seconds(60-myKalender.get(Calendar.SECOND)),
+                        new KeyValue(
+                                sekundenRotation.angleProperty(),
+                                startSekundenWinkel+6*(60-myKalender.get(Calendar.SECOND)),
+                                Interpolator.LINEAR
+                        )
+                )
+        );
+        sekundenInitialisierer.play();
+
+        final Timeline stundenAktualisierer = new Timeline(
+                new KeyFrame(
+                        Duration.hours(12),
+                        new KeyValue(
+                                stundenRotation.angleProperty(),
+                                startStundenWinkel+360,
+                                Interpolator.LINEAR
+                        )
+                )
+        );
+        stundenAktualisierer.setCycleCount(Animation.INDEFINITE);
+        stundenAktualisierer.play();
+
+        final Timeline aktualisierer = new Timeline(
+                new KeyFrame(
+                        Duration.seconds(0),
+                        actionEvent -> {
+                            Calendar kalender = GregorianCalendar.getInstance();
+                            double aktuelleMinutenWinkel = kalender.get(Calendar.MINUTE)*360/60;
+                            if (kalender.get(Calendar.SECOND) == 0) {
+                            } else if (kalender.get(Calendar.SECOND) == 1){
+                                final Animation animation1 = new Transition() {
+                                    {
+                                        setCycleDuration(Duration.millis(400));
+                                    }
+                                    protected void interpolate(double frac) {
+                                        minutenRotation.setAngle(aktuelleMinutenWinkel-6+6*frac);
+                                    }
+                                };
+                                animation1.play();
+                                final Animation animation2 = new Transition() {
+                                    {
+                                        setCycleDuration(Duration.millis(300));
+                                    }
+                                    protected void interpolate(double frac) {
+                                        minutenRotation.setAngle(aktuelleMinutenWinkel-3*frac);
+                                    }
+                                };
+                                animation2.play();
+                                final Animation animation3 = new Transition() {
+                                    {
+                                        setCycleDuration(Duration.millis(300));
+                                    }
+                                    protected void interpolate(double frac) {
+                                        minutenRotation.setAngle(aktuelleMinutenWinkel-3+3*frac);
+                                    }
+                                };
+                                animation3.play();
+                            } else if (kalender.get(Calendar.SECOND) == 2){
+                                minutenRotation.setAngle(aktuelleMinutenWinkel);
+                                sekundenRotation.setAngle(0);
+                                final Timeline sekundenAktualisierer = new Timeline(
+                                        new KeyFrame(
+                                                Duration.seconds(58),
+                                                new KeyValue(
+                                                        sekundenRotation.angleProperty(),
+                                                        sekundenRotation.getAngle()+360,
+                                                        Interpolator.LINEAR
+                                                )
+                                        )
+                                );
+                                sekundenAktualisierer.play();
+                            }
+                        }
+                ),
+                new KeyFrame(Duration.seconds(1))
+        );
+        aktualisierer.setCycleCount(Animation.INDEFINITE);
+        aktualisierer.play();
+
+        if (false){
+            sekundenInitialisierer.stop();
+            stundenAktualisierer.stop();
+            aktualisierer.stop();
+            //sekundenAktualisierer.stop();
         }
     }
 }

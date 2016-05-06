@@ -19,10 +19,15 @@
 package SBBClock.view;
 
 import SBBClock.model.TimeUpdatePM;
-import SBBClock.model.TimeUpdateSBBPM;
 import SBBClock.model.WatchPM;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 
 /**
@@ -74,7 +79,28 @@ public class MainUI extends BorderPane{
         sekundenRotation.setPivotX(150);
         sekundenRotation.setPivotY(150);
 
-        new TimeUpdatePM(stundenRotation, minutenRotation, sekundenRotation);
+        final boolean[] sbb = {false};
+        TimeUpdatePM tu = new TimeUpdatePM();
+        //tu.use(stundenRotation, minutenRotation, sekundenRotation);
+        tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
+
+        /*while (!sbb[0]){
+        }
+        tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
+        */
+
+        this.setOnKeyPressed(event -> {
+            // System.out.println("Key pressed");
+            sbb[0] = true;
+            tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
+            // geht noch nicht
+        });
+
+        this.setOnMouseClicked(event -> {
+            // System.out.println("Mouse clicked");
+            sbb[0] = true;
+            tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
+        });
 
     }
 
