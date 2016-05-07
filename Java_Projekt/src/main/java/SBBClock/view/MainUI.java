@@ -79,9 +79,10 @@ public class MainUI extends BorderPane{
         sekundenRotation.setPivotX(150);
         sekundenRotation.setPivotY(150);
 
-        final boolean[] sbb = {false};
         TimeUpdatePM tu = new TimeUpdatePM();
-        //tu.use(stundenRotation, minutenRotation, sekundenRotation);
+
+        // Wahl zwischen SBB-Verhalten und normalem Sekundenzeiger-Verhalten:
+        // tu.use(stundenRotation, minutenRotation, sekundenRotation);
         tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
 
         /*while (!sbb[0]){
@@ -91,15 +92,15 @@ public class MainUI extends BorderPane{
 
         this.setOnKeyPressed(event -> {
             // System.out.println("Key pressed");
-            sbb[0] = true;
+            tu.sbb[0] = true;
             tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
             // geht noch nicht
         });
 
         this.setOnMouseClicked(event -> {
             // System.out.println("Mouse clicked");
-            sbb[0] = true;
-            tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
+            tu.sbb[0] = true;
+            // tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
         });
 
     }

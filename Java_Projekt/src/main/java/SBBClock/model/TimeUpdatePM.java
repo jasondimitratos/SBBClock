@@ -11,8 +11,7 @@ import java.util.GregorianCalendar;
  */
 public class TimeUpdatePM {
 
-    public TimeUpdatePM(){
-    }
+    public final boolean[] sbb = {false};
 
     public void use(Rotate stundenRotation, Rotate minutenRotation, Rotate sekundenRotation){
         final Timeline aktualisierer = new Timeline(
@@ -33,9 +32,16 @@ public class TimeUpdatePM {
         aktualisierer.setCycleCount(Animation.INDEFINITE);
         aktualisierer.play();
 
+        /*
+        while (sbb[0]){
+            // TODO: wieder anhalten, sobald sbb==true
+            aktualisierer.stop();
+        }
+
         if (false){
             aktualisierer.stop();
         }
+        */
     }
 
     public void usesbb(Rotate stundenRotation, Rotate minutenRotation, Rotate sekundenRotation){
@@ -129,12 +135,14 @@ public class TimeUpdatePM {
         aktualisierer.setCycleCount(Animation.INDEFINITE);
         aktualisierer.play();
 
+        /*
         if (false){
             sekundenInitialisierer.stop();
             stundenAktualisierer.stop();
             aktualisierer.stop();
             //sekundenAktualisierer.stop();
         }
+        */
     }
 }
 
