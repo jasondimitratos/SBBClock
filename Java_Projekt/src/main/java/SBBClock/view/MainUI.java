@@ -22,7 +22,10 @@ import SBBClock.model.TimeUpdatePM;
 import SBBClock.model.WatchPM;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
@@ -33,7 +36,7 @@ import java.util.GregorianCalendar;
 /**
  * @author Luzian Seiler, Jason Dimitratos , Andrea Zirn
  */
-public class MainUI extends BorderPane{
+public class MainUI extends Region{
 
     private final WatchPM model;
     private Zifferblatt zifferblatt;
@@ -41,11 +44,27 @@ public class MainUI extends BorderPane{
     private Minutenzeiger minutenzeiger;
     private Sekundenzeiger sekundenzeiger;
 
+    private static final double PREFERRED_SIZE = 300;
+    private static final double MINIMUM_SIZE   = 75;
+    private static final double MAXIMUM_SIZE   = 800;
+
+    private Pane drawingPane;
+
     public MainUI(WatchPM model) {
         this.model = model;
+        init();
         initializeControls();
         layoutControls();
         addBindings();
+    }
+
+    private void init() {
+        Insets padding = getPadding();
+        double verticalPadding = padding.getTop() + padding.getBottom();
+        double horizontalPadding = padding.getLeft() + padding.getRight();
+        setMinSize(MINIMUM_SIZE + horizontalPadding, MINIMUM_SIZE + verticalPadding);
+        setPrefSize(PREFERRED_SIZE + horizontalPadding, PREFERRED_SIZE + verticalPadding);
+        setMaxSize(MAXIMUM_SIZE + horizontalPadding, MAXIMUM_SIZE + verticalPadding);
     }
 
 
@@ -54,15 +73,21 @@ public class MainUI extends BorderPane{
         stundenzeiger = new Stundenzeiger(model);
         minutenzeiger = new Minutenzeiger(model);
         sekundenzeiger = new Sekundenzeiger(model);
+        drawingPane = new Pane();
+        drawingPane.setMaxSize(PREFERRED_SIZE, PREFERRED_SIZE);
+        drawingPane.setMinSize(PREFERRED_SIZE, PREFERRED_SIZE);
+        drawingPane.setPrefSize(PREFERRED_SIZE, PREFERRED_SIZE);
+        drawingPane.getStyleClass().add("ResizingTemplatePane");
     }
 
     private void layoutControls() {
-        setPrefSize(300,300);
         zifferblatt.setId("zifferblatt");
         stundenzeiger.setId("stundenzeiger");
         minutenzeiger.setId("minutenzeiger");
         sekundenzeiger.setId("sekundenzeiger");
-        getChildren().addAll(zifferblatt, stundenzeiger, minutenzeiger, sekundenzeiger);
+        drawingPane.getChildren().addAll(zifferblatt, stundenzeiger, minutenzeiger, sekundenzeiger);
+        getChildren().add(drawingPane);
+
 
         final Rotate stundenRotation = new Rotate();
         final Rotate minutenRotation = new Rotate();
@@ -80,7 +105,6 @@ public class MainUI extends BorderPane{
         sekundenRotation.setPivotY(150);
 
         TimeUpdatePM tu = new TimeUpdatePM();
-
         // Wahl zwischen SBB-Verhalten und normalem Sekundenzeiger-Verhalten:
         // tu.use(stundenRotation, minutenRotation, sekundenRotation);
         tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
@@ -103,6 +127,27 @@ public class MainUI extends BorderPane{
             // tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
         });
 
+    }
+
+
+    @Override
+    protected void layoutChildren() {
+        super.layoutChildren();
+        resize();
+    }
+
+    private void resize() {
+        double width  = getWidth() - getInsets().getLeft() - getInsets().getRight();
+        double height = getHeight() - getInsets().getTop() - getInsets().getBottom();
+        double size = Math.max(Math.min(Math.min(width, height), MAXIMUM_SIZE), MINIMUM_SIZE);
+
+        double scalingFactor = size / PREFERRED_SIZE;
+
+        if(width > 0 && height > 0){
+            drawingPane.relocate((getWidth() - PREFERRED_SIZE) * 0.5, (getHeight() - PREFERRED_SIZE) * 0.5);
+            drawingPane.setScaleX(scalingFactor);
+            drawingPane.setScaleY(scalingFactor);
+        }
     }
 
     private void addEventHandlers() {

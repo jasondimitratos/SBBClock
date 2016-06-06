@@ -1,3 +1,5 @@
-#ziffernblatt{
-    -fx-background-color: mediumpurple;
+ResizingTemplatePane {
+    -fx-padding: 5px;
+    -fx-margin: 10px;
+    -fx-background-color: white;
 }

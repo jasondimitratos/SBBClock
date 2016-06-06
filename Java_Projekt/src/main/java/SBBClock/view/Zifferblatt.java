@@ -154,7 +154,7 @@ public class Zifferblatt extends BorderPane{
 
 
     public void layoutControls() {
-        zblatt.setStyle("-fx-fill: transparent ; -fx-stroke:black; -fx-stroke-width: 5px");
+        zblatt.setStyle("-fx-fill: transparent ; -fx-stroke:black; -fx-stroke-width: 5px; -fx-padding: 5 px");
         zblattRand.setStyle("-fx-fill: transparent ; -fx-stroke:white; -fx-stroke-type: outside; -fx-stroke-width: 5px");
         line1.setStyle("-fx-stroke-width: 9px");
         line2.setStyle("-fx-stroke-width: 9px");
