@@ -77,10 +77,10 @@ public class MainUI extends Region{
         drawingPane.setMaxSize(PREFERRED_SIZE, PREFERRED_SIZE);
         drawingPane.setMinSize(PREFERRED_SIZE, PREFERRED_SIZE);
         drawingPane.setPrefSize(PREFERRED_SIZE, PREFERRED_SIZE);
-        drawingPane.getStyleClass().add("ResizingTemplatePane");
     }
 
     private void layoutControls() {
+        setPadding(new Insets(10));
         zifferblatt.setId("zifferblatt");
         stundenzeiger.setId("stundenzeiger");
         minutenzeiger.setId("minutenzeiger");
@@ -103,6 +103,7 @@ public class MainUI extends Region{
         minutenRotation.setPivotY(150);
         sekundenRotation.setPivotX(150);
         sekundenRotation.setPivotY(150);
+
 
         TimeUpdatePM tu = new TimeUpdatePM();
         // Wahl zwischen SBB-Verhalten und normalem Sekundenzeiger-Verhalten:
