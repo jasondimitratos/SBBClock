@@ -115,6 +115,7 @@ public class MainUI extends Region{
         tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
         */
 
+        /*
         this.setOnKeyPressed(event -> {
             // System.out.println("Key pressed");
             tu.sbb[0] = true;
@@ -127,6 +128,7 @@ public class MainUI extends Region{
             tu.sbb[0] = true;
             // tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
         });
+        */
 
     }
 
