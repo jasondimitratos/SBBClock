@@ -11,10 +11,22 @@ import java.util.GregorianCalendar;
  */
 public class TimeUpdatePM {
 
-    public final boolean[] sbb = {false};
+    public boolean sbbActive = false;
+    private Timeline sekundenInitialisierer;
+    private Timeline stundenAktualisierer;
+    private Timeline sbbAktualisierer;
+
+    private Timeline defaultAktualisierer;
 
     public void use(Rotate stundenRotation, Rotate minutenRotation, Rotate sekundenRotation){
-        final Timeline aktualisierer = new Timeline(
+        sbbActive = false;
+        if(sekundenInitialisierer != null){
+            sekundenInitialisierer.stop();
+            stundenAktualisierer.stop();
+            sbbAktualisierer.stop();
+        }
+
+        defaultAktualisierer = new Timeline(
                 new KeyFrame(
                         Duration.seconds(0),
                         actionEvent -> {
@@ -29,22 +41,16 @@ public class TimeUpdatePM {
                 ),
                 new KeyFrame(Duration.seconds(1))
         );
-        aktualisierer.setCycleCount(Animation.INDEFINITE);
-        aktualisierer.play();
+        defaultAktualisierer.setCycleCount(Animation.INDEFINITE);
+        defaultAktualisierer.play();
 
-        /*
-        while (sbb[0]){
-            // TODO: wieder anhalten, sobald sbb==true
-            aktualisierer.stop();
-        }
-
-        if (false){
-            aktualisierer.stop();
-        }
-        */
     }
 
     public void usesbb(Rotate stundenRotation, Rotate minutenRotation, Rotate sekundenRotation){
+        sbbActive = true;
+        if(defaultAktualisierer != null){
+            defaultAktualisierer.stop();
+        }
         Calendar myKalender = GregorianCalendar.getInstance();
         final double startStundenWinkel = myKalender.get(Calendar.HOUR)*360/12 + myKalender.get(Calendar.MINUTE)*30/60;
         final double startMinutenWinkel = myKalender.get(Calendar.MINUTE)*360/60;
@@ -53,7 +59,7 @@ public class TimeUpdatePM {
         minutenRotation.setAngle(startMinutenWinkel);
         sekundenRotation.setAngle(startSekundenWinkel);
 
-        final Timeline sekundenInitialisierer = new Timeline(
+        sekundenInitialisierer = new Timeline(
                 new KeyFrame(
                         Duration.seconds(60-myKalender.get(Calendar.SECOND)),
                         new KeyValue(
@@ -65,7 +71,7 @@ public class TimeUpdatePM {
         );
         sekundenInitialisierer.play();
 
-        final Timeline stundenAktualisierer = new Timeline(
+        stundenAktualisierer = new Timeline(
                 new KeyFrame(
                         Duration.hours(12),
                         new KeyValue(
@@ -78,7 +84,7 @@ public class TimeUpdatePM {
         stundenAktualisierer.setCycleCount(Animation.INDEFINITE);
         stundenAktualisierer.play();
 
-        final Timeline aktualisierer = new Timeline(
+        sbbAktualisierer = new Timeline(
                 new KeyFrame(
                         Duration.seconds(0),
                         actionEvent -> {
@@ -132,17 +138,9 @@ public class TimeUpdatePM {
                 ),
                 new KeyFrame(Duration.seconds(1))
         );
-        aktualisierer.setCycleCount(Animation.INDEFINITE);
-        aktualisierer.play();
+        sbbAktualisierer.setCycleCount(Animation.INDEFINITE);
+        sbbAktualisierer.play();
 
-        /*
-        if (false){
-            sekundenInitialisierer.stop();
-            stundenAktualisierer.stop();
-            aktualisierer.stop();
-            //sekundenAktualisierer.stop();
-        }
-        */
     }
 }
 

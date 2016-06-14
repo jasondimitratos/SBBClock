@@ -65,6 +65,7 @@ public class MainUI extends Region{
         setMinSize(MINIMUM_SIZE + horizontalPadding, MINIMUM_SIZE + verticalPadding);
         setPrefSize(PREFERRED_SIZE + horizontalPadding, PREFERRED_SIZE + verticalPadding);
         setMaxSize(MAXIMUM_SIZE + horizontalPadding, MAXIMUM_SIZE + verticalPadding);
+        addEventHandlers();
     }
 
 
@@ -108,27 +109,26 @@ public class MainUI extends Region{
         TimeUpdatePM tu = new TimeUpdatePM();
         // Wahl zwischen SBB-Verhalten und normalem Sekundenzeiger-Verhalten:
         // tu.use(stundenRotation, minutenRotation, sekundenRotation);
+        // tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
         tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
 
-        /*while (!sbb[0]){
-        }
-        tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
-        */
-
-        /*
         this.setOnKeyPressed(event -> {
+            if(tu.sbbActive){
+                tu.use(stundenRotation, minutenRotation, sekundenRotation);
+            }else{
+                tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
+            }
             // System.out.println("Key pressed");
-            tu.sbb[0] = true;
-            tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
-            // geht noch nicht
         });
 
         this.setOnMouseClicked(event -> {
+            if(tu.sbbActive){
+                tu.use(stundenRotation, minutenRotation, sekundenRotation);
+            }else{
+                tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
+            }
             // System.out.println("Mouse clicked");
-            tu.sbb[0] = true;
-            // tu.usesbb(stundenRotation, minutenRotation, sekundenRotation);
         });
-        */
 
     }
 

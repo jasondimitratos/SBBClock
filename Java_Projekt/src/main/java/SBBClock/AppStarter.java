@@ -91,6 +91,7 @@ public class AppStarter extends Application {
 		primaryStage.centerOnScreen();
 
 		primaryStage.show();
+		rootPanel.requestFocus(); // nötig für KeyPressed event!
 	}
 
 	public static void main(String[] args) {
